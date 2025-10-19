@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mocassin & Co - Premium Footwear</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #8B4513;
+            --accent: #c19a6b;
+            --light: #f5f5f5;
+            --dark: #2c3e50;
+            --text: #34495e;
+            --gold: #d4af37;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text);
+            padding-top: 76px;
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--text);
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #6b3300;
+            transform: translateY(-2px);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto;
+        }
+        
+        .product-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 30px;
+            height: 100%;
+            position: relative;
+            background: white;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-img {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+        
+        .product-card-body {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+        
+        .badge-sale {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            z-index: 10;
+        }
+        
+        .category-card {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 300px;
+            margin-bottom: 30px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .category-img {
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+            width: 100%;
+        }
+        
+        .category-card:hover .category-img {
+            transform: scale(1.1);
+        }
+        
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .category-overlay h3 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .flash-sale {
+            background: linear-gradient(45deg, #8B4513, #a05a2c);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .countdown-item {
+            margin: 0 15px;
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 80px;
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 15px 0;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: #bdc3c7;
+        }
+        
+        .newsletter {
+            background: var(--light);
+            padding: 60px 0;
+        }
+        
+        .product-hover-details {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            border-top: 1px solid #eee;
+        }
+        
+        .product-card:hover .product-hover-details {
+            transform: translateY(0);
+        }
+        
+        .hover-details-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .hover-details-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .hover-details-price {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+        
+        .brand-highlight {
+            color: var(--secondary);
+        }
+        
+        /* Cart Styles */
+        .cart-item {
+            transition: all 0.3s ease;
+        }
+        
+        .cart-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .toast {
+            background-color: white;
+            border-left: 4px solid #28a745;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .countdown-item {
+                margin: 0 5px;
+                min-width: 60px;
+            }
+            
+            .category-card {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home"><span class="brand-highlight">Mocassin</span> & Co</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#product">Products</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#casual-shoes" onclick="smoothScroll('casual-shoes')">Casual Shoes</a></li>
+                            <li><a class="dropdown-item" href="#baby-casual" onclick="smoothScroll('baby-casual')">Baby Casual Shoes</a></li>
+                            <li><a class="dropdown-item" href="#handbags" onclick="smoothScroll('handbags')">Hand Bags</a></li>
+                            <li><a class="dropdown-item" href="#loafers" onclick="smoothScroll('loafers')">Loafers</a></li>
+                            <li><a class="dropdown-item" href="#mens-slippers" onclick="smoothScroll('mens-slippers')">Men's Casual Slippers</a></li>
+                            <li><a class="dropdown-item" href="#phesawari" onclick="smoothScroll('phesawari')">Phesawari</a></li>
+                            <li><a class="dropdown-item" href="#womens-fancy" onclick="smoothScroll('womens-fancy')">Women's Fancy Slippers</a></li>
+                            <li><a class="dropdown-item" href="#womens-sandals" onclick="smoothScroll('womens-sandals')">Women Sandals</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sale">Sale</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="#" class="btn btn-outline-dark me-2"><i class="fas fa-search"></i></a>
+                    <a href="#" class="btn btn-outline-dark me-2"><i class="fas fa-heart"></i></a>
+                    <a href="#" class="btn btn-outline-dark position-relative" data-bs-toggle="modal" data-bs-target="#cartModal">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Smooth Scroll Function
+function smoothScroll(targetId) {
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+        // Close mobile menu if open
+        const navbarCollapse = document.getElementById('navbarNav');
+        if (navbarCollapse.classList.contains('show')) {
+            const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+            bsCollapse.hide();
+        }
+        
+        // Calculate offset for fixed navbar
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+        const targetPosition = targetElement.offsetTop - navbarHeight;
+        
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Update your existing smooth scrolling code
+document.addEventListener('DOMContentLoaded', function() {
+    updateCountdown();
+    updateCartUI();
+    
+    // Add smooth scrolling for all navigation links
+    document.querySelectorAll('a.nav-link, .dropdown-item').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            
+            // Only handle internal links that start with #
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                smoothScroll(targetId);
+            }
+        });
+    });
+});
+    </script>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Crafting Comfort, Defining Style</h1>
+            <p class="lead">Discover our premium collection of footwear and accessories for the entire family</p>
+            <a href="#" class="btn btn-primary btn-lg">Explore Collection</a>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">Shop By Category</h2>
+            <div class="row">
+                <!-- Casual Slippers -->
+                <div class="col-md-3 col-6">
+                    <div class="category-card" onclick="filterCategory('casual-shoes')">
+                        <img src="imgs/Mens Casual Sllipers/Black casual slipper.webp" alt="Casual Slippers" class="category-img">
+                        <div class="category-overlay">
+                            <h3>Casual Shoes</h3>
+                            <p>Everyday Comfort</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Baby Casual Shoes -->
+                <div class="col-md-3 col-6">
+                    <div class="category-card" onclick="filterCategory('baby-casual')">
+                        <img src="imgs/baby causal shoes/baby_purple_jogger_shoes.webp" alt="Baby Casual Shoes" class="category-img">
+                        <div class="category-overlay">
+                            <h3>Baby Casual Shoes</h3>
+                            <p>Adorable & Comfortable</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hand Bags -->
+                <div class="col-md-3 col-6">
+                    <div class="category-card" onclick="filterCategory('handbags')">
+                        <img src="imgs/Hand bags/casual bag mustard.webp" alt="Hand Bags" class="category-img">
+                        <div class="category-overlay">
+                            <h3>Hand Bags</h3>
+                            <p>Style & Function</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Loafers -->
+                <div class="col-md-3 col-6">
+                    <div class="category-card" onclick="filterCategory('loafers')">
+                        <img src="imgs/Loafers/Ferricelli Lexus loafers.webp" alt="Loafers" class="category-img">
+                        <div class="category-overlay">
+                            <h3>Loafers</h3>
+                            <p>Elegant & Versatile</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Second Row of Categories -->
+            <div class="row mt-4">
+                <!-- Baba Casual Shoes -->
+                <div class="col-md-3 col-6">
+                    <div class="category-card" onclick="filterCategory('casual-shoes')">
+                        <img src="imgs/baba casual shoes/baba gray jogger shoes.webp" alt="Men's Casual Slippers" class="category-img">
+                        <div class="category-overlay">
+                            <h3>Baba Casual Shoes</h3>
+                            <p>Relax in Style</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phesawari -->
+                <div class="col-md-3 col-6">
+                    <div class="category-card" onclick="filterCategory('phesawari')">
+                        <img src="imgs/Phesawari/Blue Matt peshawari.webp" alt="Phesawari" class="category-img">
+                        <div class="category-overlay">
+                            <h3>Phesawari</h3>
+                            <p>Traditional Elegance</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Women's Fancy Slippers -->
+                <div class="col-md-3 col-6">
+                    <div class="category-card" onclick="filterCategory('womens-fancy')">
+                        <img src="imgs/women fancy slipper/hermion black fancy slippers.webp" alt="Women's Fancy Slippers" class="category-img">
+                        <div class="category-overlay">
+                            <h3>Women's Fancy Slippers</h3>
+                            <p>Chic & Comfortable</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Women Sandals -->
+                <div class="col-md-3 col-6">
+                    <div class="category-card" onclick="filterCategory('womens-sandals')">
+                        <img src="imgs/Women Sandals/Brown sandal.webp" alt="Women Sandals" class="category-img">
+                        <div class="category-overlay">
+                            <h3>Women Sandals</h3>
+                            <p>Summer Essentials</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Casual Shoes Section -->
+    <section id="casual-shoes" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Casual Shoes</h2>
+            <div class="row">
+                <!-- Product 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/Man casual shoes/Casual shoes black.webp" class="product-img" alt="Urban Walkers">
+                            <span class="badge-sale">Bestseller</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Urban Walkers</h5>
+                            <p class="text-muted">Comfortable everyday shoes for city life</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 3,250</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Urban Walkers', 3250, 'imgs/Man casual shoes/Casual shoes black.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="imgs/Man casual shoes/Casual shoes Brown.webp" class="product-img" alt="Comfort Stride">
+                        <div class="product-card-body">
+                            <h5 class="product-title">Comfort Stride</h5>
+                            <p class="text-muted">Lightweight and flexible for all-day comfort</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 2,950</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Comfort Stride', 2950, 'imgs/Man casual shoes/Casual shoes Brown.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/Man casual shoes/mans casual shoe.webp" class="product-img" alt="City Sneakers">
+                            <span class="badge-sale">New</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">City Sneakers</h5>
+                            <p class="text-muted">Modern design meets everyday functionality</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 3,450</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('City Sneakers', 3450, 'imgs/Man casual shoes/mans casual shoe.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="imgs/Man casual shoes/mans casual shoes.webp" class="product-img" alt="Weekend Casual">
+                        <div class="product-card-body">
+                            <h5 class="product-title">Weekend Casual</h5>
+                            <p class="text-muted">Relaxed style for your days off</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 2,750</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Weekend Casual', 2750, 'imgs/Man casual shoes/mans casual shoes.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Baby Casual Shoes Section -->
+    <section id="baby-casual" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Baby Casual Shoes</h2>
+            <div class="row">
+                <!-- Product 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/baby causal shoes/baby_fawn_jogger_shoes.webp" class="product-img" alt="Little Steps">
+                            <span class="badge-sale">Popular</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Little Steps</h5>
+                            <p class="text-muted">Soft sole shoes for toddlers</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 1,850</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Little Steps', 1850, 'imgs/baby causal shoes/baby_fawn_jogger_shoes.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="imgs/baby causal shoes/baby_purple_jogger_shoes.webp" class="product-img" alt="Baby Comfort">
+                        <div class="product-card-body">
+                            <h5 class="product-title">Baby Comfort</h5>
+                            <p class="text-muted">Breathable and lightweight for active babies</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 1,950</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Baby Comfort', 1950, 'imgs/baby causal shoes/baby_purple_jogger_shoes.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/baby causal shoes/black casual sandal.webp" class="product-img" alt="Tiny Walkers">
+                            <span class="badge-sale">New</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Tiny Walkers</h5>
+                            <p class="text-muted">Durable shoes for growing feet</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 2,150</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Tiny Walkers', 2150, 'imgs/baby causal shoes/black casual sandal.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="imgs/baby causal shoes/golden fancy pumps.webp" class="product-img" alt="Kiddo Sneakers">
+                        <div class="product-card-body">
+                            <h5 class="product-title">Kiddo Sneakers</h5>
+                            <p class="text-muted">Fun designs kids love</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 2,050</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Kiddo Sneakers', 2050, 'imgs/baby causal shoes/golden fancy pumps.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hand Bags Section -->
+    <section id="handbags" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Hand Bags</h2>
+            <div class="row">
+                <!-- Product 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/Hand bags/black shoulder bags.webp" class="product-img" alt="Classic Tote">
+                            <span class="badge-sale">Bestseller</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Black Shoulder Bag</h5>
+                            <p class="text-muted">Spacious and stylish for everyday use</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 4,500</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Black Shoulder Bag', 4500, 'imgs/Hand bags/black shoulder bags.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="imgs/Hand bags/casual bag mustard.webp" class="product-img" alt="Crossbody Bag">
+                        <div class="product-card-body">
+                            <h5 class="product-title">Casual Bag</h5>
+                            <p class="text-muted">Hand Bags</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 3,750</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Casual Bag', 3750, 'imgs/Hand bags/casual bag mustard.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/Hand bags/casual shoulder bags light brown.webp" class="product-img" alt="Evening Clutch">
+                            <span class="badge-sale">New</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Casual Shoulder Bag</h5>
+                            <p class="text-muted">Elegant accessory for special occasions</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 2,950</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Casual Shoulder Bag', 2950, 'imgs/Hand bags/casual shoulder bags light brown.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="imgs/Hand bags/gray sholuder bags.webp" class="product-img" alt="Backpack Purse">
+                        <div class="product-card-body">
+                            <h5 class="product-title">Shoulder Bag</h5>
+                            <p class="text-muted">Trendy and practical for modern women</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 4,250</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Shoulder Bag', 4250, 'imgs/Hand bags/gray sholuder bags.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loafers Section -->
+    <section id="loafers" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Loafers</h2>
+            <div class="row">
+                <!-- Loafer 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/Loafers/Ferricelli Lexus loafers.webp" class="product-img" alt="Classic Leather Loafers">
+                            <span class="badge-sale">Bestseller</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Ferricelli Lexus Loafers</h5>
+                            <p class="text-muted">Timeless elegance with superior comfort</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 3,950</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Classic Leather Loafers', 3950, 'imgs/Loafers/Ferricelli Lexus loafers.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Loafer 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="imgs/Loafers/White Men's Leather Loafer Gold Buckle Style.webp" class="product-img" alt="Penny Loafers">
+                        <div class="product-card-body">
+                            <h5 class="product-title">Men's Leather Loafer Gold Buckle Style - White</h5>
+                            <p class="text-muted">Vintage style with modern comfort</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 4,250</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Penny Loafers', 4250, 'imgs/Loafers/Ferricelli Lexus loafers.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Loafer 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/Loafers/men's brown driving loafer.webp" class="product-img" alt="Tassel Loafers">
+                            <span class="badge-sale">New</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Brown Driving Loafer For Men</h5>
+                            <p class="text-muted">Sophisticated design with tassel detail</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 4,500</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Tassel Loafers', 4500, 'imgs/Loafers/Ferricelli Lexus loafers.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Loafer 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="imgs/Loafers/Maroon Glossy Pleaded Loafers.webp" class="product-img" alt="Driving Loafers">
+                        <div class="product-card-body">
+                            <h5 class="product-title">Maroon Glossy Pleaded Loafers</h5>
+                            <p class="text-muted">Comfort-focused design for all-day wear</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 3,750</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Driving Loafers', 3750, 'imgs/Loafers/Ferricelli Lexus loafers.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Men's Casual Slippers Section -->
+    <section id="mens-slippers" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Men's Casual Slippers</h2>
+            <div class="row">
+                <!-- Slipper 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/Mens Casual Sllipers/Black casual slipper.webp" class="product-img" alt="Comfort Slides">
+                            <span class="badge-sale">Popular</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Casual Men's Slipper - Black</h5>
+                            <p class="text-muted">Easy slip-on design for home comfort</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 1,850</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Comfort Slides', 1850, 'imgs/Mens Casual Sllipers/Black casual slipper.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slipper 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="imgs/Mens Casual Sllipers/Blue casual slippers for men.webp" class="product-img" alt="Moccasin Slippers">
+                        <div class="product-card-body">
+                            <h5 class="product-title">Casual Slipper for Men - Blue</h5>
+                            <p class="text-muted">Traditional style with modern comfort</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 2,250</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Moccasin Slippers', 2250, 'imgs/Mens Casual Sllipers/Black casual slipper.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slipper 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/Mens Casual Sllipers/Brown casual slipper.webp" class="product-img" alt="Memory Foam Slippers">
+                            <span class="badge-sale">Bestseller</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Casual Slipper - Brown</h5>
+                            <p class="text-muted">Ultimate comfort with memory foam</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 2,550</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Memory Foam Slippers', 2550, 'imgs/Mens Casual Sllipers/Black casual slipper.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slipper 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="imgs/Mens Casual Sllipers/dark brown mens casual slippers.webp" class="product-img" alt="Open Toe Slippers">
+                        <div class="product-card-body">
+                            <h5 class="product-title">Casual Men's Slipper - Brown</h5>
+                            <p class="text-muted">Breathable design for warm days</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 1,950</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Open Toe Slippers', 1950, 'imgs/Mens Casual Sllipers/Black casual slipper.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phesawari Section -->
+    <section id="phesawari" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Phesawari</h2>
+            <div class="row">
+                <!-- Phesawari 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/Phesawari/Blue Matt peshawari.webp" class="product-img" alt="Traditional Peshawari">
+                            <span class="badge-sale">Classic</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Traditional Peshawari</h5>
+                            <p class="text-muted">Authentic design with handcrafted details</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 3,250</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Traditional Peshawari', 3250, 'imgs/Phesawari/Blue Matt peshawari.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phesawari 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="imgs/Phesawari/Mustard Kheri Chappal.webp" class="product-img" alt="Embroidered Peshawari">
+                        <div class="product-card-body">
+                            <h5 class="product-title">Embroidered Peshawari</h5>
+                            <p class="text-muted">Intricate embroidery on premium leather</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 3,850</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Embroidered Peshawari', 3850, 'imgs/Phesawari/Mustard Kheri Chappal.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phesawari 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/Phesawari/Peshawari Sandal - Brown.webp" class="product-img" alt="Modern Peshawari">
+                            <span class="badge-sale">New</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Modern Peshawari</h5>
+                            <p class="text-muted">Contemporary twist on traditional design</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 3,450</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Modern Peshawari', 3450, 'imgs/Phesawari/Peshawari Sandal - Brown.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phesawari 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="imgs/Phesawari/Blue Matt peshawari.webp" class="product-img" alt="Casual Peshawari">
+                        <div class="product-card-body">
+                            <h5 class="product-title">Casual Peshawari</h5>
+                            <p class="text-muted">Everyday comfort with traditional style</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 2,950</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Casual Peshawari', 2950, 'imgs/Phesawari/Blue Matt peshawari.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Women's Fancy Slippers Section -->
+    <section id="womens-fancy" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Women's Fancy Slippers</h2>
+            <div class="row">
+                <!-- Fancy Slipper 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/women fancy slipper/hermion black fancy slippers.webp" class="product-img" alt="Beaded Slippers">
+                            <span class="badge-sale">Elegant</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Hermion Black Fancy Slipper</h5>
+                            <p class="text-muted">Intricate beadwork for special occasions</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 2,850</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Beaded Slippers', 2850, 'imgs/women fancy slipper/hermion black fancy slippers.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fancy Slipper 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="imgs/women fancy slipper/stella white fancy slippers.webp" class="product-img" alt="Embroidered Khussa">
+                        <div class="product-card-body">
+                            <h5 class="product-title">Stella White Fancy Slipper</h5>
+                            <p class="text-muted">Traditional khussa with fancy embroidery</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 3,150</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Embroidered Khussa', 3150, 'imgs/women fancy slipper/hermion black fancy slippers.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fancy Slipper 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/women fancy slipper/stella pink fancy slippers.webp" class="product-img" alt="Pearl Slippers">
+                            <span class="badge-sale">Luxury</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Stella Pink Fancy Slipper</h5>
+                            <p class="text-muted">Luxurious pearl embellishments</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 3,450</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Pearl Slippers', 3450, 'imgs/women fancy slipper/hermion black fancy slippers.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fancy Slipper 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="imgs/women fancy slipper/Hermion maroon fancy slippers.webp" class="product-img" alt="Sequined Slippers">
+                        <div class="product-card-body">
+                            <h5 class="product-title">Hermion Maroon Fancy Slipper</h5>
+                            <p class="text-muted">Sparkling sequins for festive occasions</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 2,750</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Sequined Slippers', 2750, 'imgs/women fancy slipper/hermion black fancy slippers.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Women Sandals Section -->
+    <section id="womens-sandals" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Women Sandals</h2>
+            <div class="row">
+                <!-- Sandal 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/Women Sandals/casual sandal white.webp" class="product-img" alt="Strappy Sandals">
+                            <span class="badge-sale">Trending</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Strappy Sandals</h5>
+                            <p class="text-muted">Elegant multiple strap design</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 2,950</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Strappy Sandals', 2950, 'imgs/Women Sandals/Brown sandal.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sandal 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="imgs/Women Sandals/casual sandal mustard.webp" class="product-img" alt="Wedge Sandals">
+                        <div class="product-card-body">
+                            <h5 class="product-title">Wedge Sandals</h5>
+                            <p class="text-muted">Comfortable height with wedge heel</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 3,350</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Wedge Sandals', 3350, 'imgs/Women Sandals/Brown sandal.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sandal 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/Women Sandals/casual sandal golden.webp" class="product-img" alt="Gladiator Sandals">
+                            <span class="badge-sale">Bestseller</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Gladiator Sandals</h5>
+                            <p class="text-muted">Bold design with multiple straps</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 3,150</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Gladiator Sandals', 3150, 'imgs/Women Sandals/Brown sandal.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sandal 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="imgs/Women Sandals/casual sandal black.webp" class="product-img" alt="Flip Flop Sandals">
+                        <div class="product-card-body">
+                            <h5 class="product-title">Flip Flop Sandals</h5>
+                            <p class="text-muted">Casual comfort for everyday wear</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 1,850</span>
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart('Flip Flop Sandals', 1850, 'imgs/Women Sandals/Brown sandal.webp')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flash Sale Section -->
+    <section id="sale" class="flash-sale">
+        <div class="container">
+            <h2 class="section-title text-white">Flash Sale</h2>
+            <p class="lead">Limited time offers. Don't miss out!</p>
+            
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">02</div>
+                    <div>Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">12</div>
+                    <div>Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">45</div>
+                    <div>Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">30</div>
+                    <div>Seconds</div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/Phesawari/Blue Matt peshawari.webp" class="product-img" alt="Blue Matt Peshawari">
+                            <span class="badge-sale">60% OFF</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Blue Matt Peshawari</h5>
+                            <p class="text-muted">Dress it up, dress it down with our handcrafted slides</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="text-decoration-line-through text-muted me-2">Rs 2,950</span>
+                                    <span class="product-price">Rs 1,770</span>
+                                </div>
+                                <button class="btn btn-sm btn-primary" onclick="addToCart('Blue Matt Peshawari', 1770, 'imgs/Phesawari/Blue Matt peshawari.webp')">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/Phesawari/Mustard Kheri Chappal.webp" class="product-img" alt="Mustard Kheri Sandals">
+                            <span class="badge-sale">40% OFF</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Mustard Kheri Sandals</h5>
+                            <p class="text-muted">Dress it up, dress it down with these handcrafted slides</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="text-decoration-line-through text-muted me-2">Rs 2,950</span>
+                                    <span class="product-price">Rs 1,770</span>
+                                </div>
+                                <button class="btn btn-sm btn-primary" onclick="addToCart('Mustard Kheri Sandals', 1770, 'imgs/Phesawari/Mustard Kheri Chappal.webp')">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card product-card">
+                        <div class="position-relative">
+                            <img src="imgs/Phesawari/Peshawari Sandal - Brown.webp" class="product-img" alt="Peshawari Sandal - Brown">
+                            <span class="badge-sale">New</span>
+                        </div>
+                        <div class="product-card-body">
+                            <h5 class="product-title">Peshawari Sandal - Brown</h5>
+                            <p class="text-muted">Peshawari Sandal - Brown pumps are out and we can't get our eyes off them!</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">Rs 3,150</span>
+                                <button class="btn btn-sm btn-primary" onclick="addToCart('Peshawari Sandal - Brown', 3150, 'imgs/Phesawari/Peshawari Sandal - Brown.webp')">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The quality of Mocassin & Co shoes is exceptional. My loafers are the most comfortable shoes I own!"</p>
+                        <div class="testimonial-author">- Ahmed R.</div>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"I bought the Bow Loafers for a wedding and received so many compliments. Will definitely shop again!"</p>
+                        <div class="testimonial-author">- Bilal S.</div>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The perfect combination of style and comfort. My go-to for both office and casual outings."</p>
+                        <div class="testimonial-author">- Omar K.</div>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h2>Stay Updated</h2>
+                    <p class="lead">Subscribe to our newsletter for exclusive offers and new product announcements</p>
+                    <form class="row g-3 justify-content-center">
+                        <div class="col-auto">
+                            <input type="email" class="form-control" placeholder="Your email address">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h3 class="footer-heading"><span class="brand-highlight">Mocassin</span> & Co</h3>
+                    <p>Premium footwear and accessories for the entire family. Crafting comfort and defining style since 2010.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h4 class="footer-heading">Shop</h4>
+                    <div class="footer-links">
+                        <a href="#">All Products</a>
+                        <a href="#">New Arrivals</a>
+                        <a href="#">Best Sellers</a>
+                        <a href="#">Sale</a>
+                        <a href="#">Gift Cards</a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h4 class="footer-heading">Information</h4>
+                    <div class="footer-links">
+                        <a href="#">About Us</a>
+                        <a href="#">Contact Us</a>
+                        <a href="#">Shipping Policy</a>
+                        <a href="#">Returns & Exchanges</a>
+                        <a href="#">FAQs</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h4 class="footer-heading">Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> 123 Fashion Street, Karachi, Pakistan</p>
+                    <p><i class="fas fa-phone me-2"></i> +92 300 1234567</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@mocassinandco.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Mocassin & Co. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Shopping Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="emptyCartMessage" class="text-center py-5">
+                        <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+                        <h5>Your cart is empty</h5>
+                        <p class="text-muted">Add some products to get started!</p>
+                    </div>
+                    
+                    <div id="cartItemsList" class="d-none">
+                        <div id="cartItems">
+                            <!-- Cart items will be dynamically inserted here -->
+                        </div>
+                        
+                        <div class="row mt-4">
+                            <div class="col-8">
+                                <h5>Total: <span id="cartTotal">Rs 0</span></h5>
+                            </div>
+                            <div class="col-4 text-end">
+                                <button class="btn btn-danger btn-sm" onclick="clearCart()">Clear Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+                    <button type="button" class="btn btn-primary" onclick="checkout()">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Shopping Cart Functionality
+        let cart = [];
+        let cartCount = 0;
+
+        // Add to Cart Function
+        function addToCart(productName, price, image, size = '6') {
+            const existingItem = cart.find(item => item.name === productName && item.size === size);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: productName,
+                    price: price,
+                    image: image,
+                    size: size,
+                    quantity: 1
+                });
+            }
+            
+            cartCount++;
+            updateCartUI();
+            showCartToast(productName);
+        }
+
+        // Update Cart UI
+        function updateCartUI() {
+            // Update cart count badge
+            const cartBadge = document.querySelector('.badge');
+            if (cartBadge) {
+                cartBadge.textContent = cartCount;
+            }
+            
+            // Update cart modal if open
+            updateCartModal();
+        }
+
+        // Show Add to Cart Toast
+        function showCartToast(productName) {
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = 'position-fixed bottom-0 end-0 p-3';
+            toast.style.zIndex = '11';
+            toast.innerHTML = `
+                <div class="toast show" role="alert">
+                    <div class="toast-header">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <strong class="me-auto">Added to Cart</strong>
+                        <button type="button" class="btn-close" onclick="this.parentElement.parentElement.parentElement.remove()"></button>
+                    </div>
+                    <div class="toast-body">
+                        ${productName} has been added to your cart.
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(toast);
+            
+            // Remove toast after 3 seconds
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.remove();
+                }
+            }, 3000);
+        }
+
+        // Update Cart Modal
+        function updateCartModal() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const cartTotalElement = document.getElementById('cartTotal');
+            const emptyCartMessage = document.getElementById('emptyCartMessage');
+            const cartItemsList = document.getElementById('cartItemsList');
+            
+            if (cart.length === 0) {
+                emptyCartMessage.classList.remove('d-none');
+                cartItemsList.classList.add('d-none');
+                cartTotalElement.textContent = 'Rs 0';
+            } else {
+                emptyCartMessage.classList.add('d-none');
+                cartItemsList.classList.remove('d-none');
+                
+                // Clear existing items
+                cartItemsContainer.innerHTML = '';
+                
+                let total = 0;
+                
+                // Add cart items
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    const cartItemHTML = `
+                        <div class="cart-item row align-items-center mb-3 pb-3 border-bottom">
+                            <div class="col-3">
+                                <img src="${item.image}" alt="${item.name}" class="img-fluid rounded">
+                            </div>
+                            <div class="col-6">
+                                <h6 class="mb-1">${item.name}</h6>
+                                <p class="text-muted mb-1">Size: ${item.size}</p>
+                                <p class="mb-0 fw-bold">Rs ${item.price}</p>
+                            </div>
+                            <div class="col-3">
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity(${index}, -1)">-</button>
+                                    <span class="mx-2">${item.quantity}</span>
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity(${index}, 1)">+</button>
+                                </div>
+                                <button class="btn btn-sm btn-danger mt-2 w-100" onclick="removeFromCart(${index})">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    cartItemsContainer.innerHTML += cartItemHTML;
+                });
+                
+                cartTotalElement.textContent = `Rs ${total}`;
+            }
+        }
+
+        // Update Item Quantity
+        function updateQuantity(index, change) {
+            const item = cart[index];
+            item.quantity += change;
+            
+            if (item.quantity <= 0) {
+                removeFromCart(index);
+            } else {
+                cartCount += change;
+                updateCartUI();
+            }
+        }
+
+        // Remove from Cart
+        function removeFromCart(index) {
+            cartCount -= cart[index].quantity;
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        // Clear Cart
+        function clearCart() {
+            cart = [];
+            cartCount = 0;
+            updateCartUI();
+        }
+
+        // Checkout Function
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            alert(`Thank you for your order! Total: Rs ${total}\n\nThis is a demo store. No actual payment will be processed.`);
+            clearCart();
+            
+            // Close cart modal
+            const cartModal = bootstrap.Modal.getInstance(document.getElementById('cartModal'));
+            cartModal.hide();
+        }
+
+        // Simple countdown timer for flash sale
+        function updateCountdown() {
+            const days = document.getElementById('days');
+            const hours = document.getElementById('hours');
+            const minutes = document.getElementById('minutes');
+            const seconds = document.getElementById('seconds');
+            
+            // Set the date we're counting down to (2 days from now)
+            const countDownDate = new Date();
+            countDownDate.setDate(countDownDate.getDate() + 2);
+            
+            // Update the count down every 1 second
+            const x = setInterval(function() {
+                // Get today's date and time
+                const now = new Date().getTime();
+                
+                // Find the distance between now and the count down date
+                const distance = countDownDate - now;
+                
+                // Time calculations for days, hours, minutes and seconds
+                const daysRemaining = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hoursRemaining = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutesRemaining = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const secondsRemaining = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                // Display the result
+                days.innerHTML = daysRemaining < 10 ? '0' + daysRemaining : daysRemaining;
+                hours.innerHTML = hoursRemaining < 10 ? '0' + hoursRemaining : hoursRemaining;
+                minutes.innerHTML = minutesRemaining < 10 ? '0' + minutesRemaining : minutesRemaining;
+                seconds.innerHTML = secondsRemaining < 10 ? '0' + secondsRemaining : secondsRemaining;
+                
+                // If the count down is finished, write some text
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.querySelector(".countdown").innerHTML = "<h3>SALE ENDED</h3>";
+                }
+            }, 1000);
+        }
+        
+        // Category filter function
+        function filterCategory(category) {
+            // Scroll to the category section
+            document.getElementById(category).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCountdown();
+            updateCartUI();
+            
+            // Add smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
